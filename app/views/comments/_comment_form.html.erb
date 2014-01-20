@@ -1,0 +1,6 @@
+<%= form_for([@user, @photo, @comment]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.text_area :comment, placeholder: "Type your comments" %>
+</br>
+  <%= f.submit "Submit", class: "btn btn-primary" %><%= link_to "Cancel", user_photos_path(@user), class: "btn btn-info offset1" %>
+<% end %>

@@ -1,0 +1,8 @@
+<% provide(:title, @user.first_name + " " + @user.last_name) %>
+<h1><%= @user.first_name %> <%= @user.last_name %> </h1>
+<% if session[:user_id] == @user.id %>
+<p><%= link_to "Post new photos", new_user_photo_path(@user) %></p>
+<% end %>
+  <% @user.photo.each do |photo| %>
+    <%= render 'shared/photo', photo: photo %>
+  <% end %>

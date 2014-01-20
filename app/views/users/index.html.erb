@@ -1,0 +1,7 @@
+<% provide(:title, "Users") %>
+<h1>Users</h1>
+<ul class="users">
+<% @users.each do |u| %>
+  <li><%=link_to u.first_name+" "+u.last_name, user_photos_path(u) %></li>
+<% end %>
+</ul>

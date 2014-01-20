@@ -1,0 +1,8 @@
+<% provide(:title, "Post new photo") %>
+<h1>Post new photo</h1>
+<div class="offset4">
+  <%= form_for([@user,@photo]) do |f| %>
+    <p><%= f.file_field :picture, class: "fileUpload" %></p>
+    <p><%= f.submit "Submit", class: "btn btn-primary" %><%= link_to 'Cancel', user_photos_path, class: "btn btn-info offset1" %></p>
+  <% end %>
+</div>

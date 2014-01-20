@@ -1,0 +1,13 @@
+    <%= image_tag "/images/#{photo.file_name}", alt: photo.file_name, class: "center-align" %>
+    <h2>Post time <%= photo.date_time %></h2>
+    <ul class="comment-list">
+      <% photo.comment.each do |comment| %>
+        <% if comment.user %>
+        <li><p class="comment"><%= link_to comment.user.first_name + " " + comment.user.last_name, user_photos_path(comment.user) %>: <%= comment.comment %></p> 
+        <p class="timestamp"><%= comment.date_time %></p></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <% if session[:user_id] %>
+      <p><%= link_to "New comment", new_user_photo_comment_path(@user,photo) %></p>
+    <% end %>
