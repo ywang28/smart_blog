@@ -155,7 +155,8 @@ footer {
 }
 
 .tag-box  {
-  border:  dashed blue 2px;
+  border:  dashed black 2px;
+  outline:  dashed white 2px;
   position:  absolute;
   left:  0px;
   top:  0px;
@@ -165,7 +166,6 @@ footer {
 }
 
 .tag-show  {
-  border:  dashed green 2px;
   position:  absolute;
   left:  0px;
   top:  0px;
@@ -178,8 +178,9 @@ footer {
   margin:  10px 20px 0px 20px;
 }
 
-.tag-box:hover  {
-  border:  dashed red 2px;
+.tag-show:hover  {
+  border:  solid white 2px;
+  outline:  solid black 2px;
 }
 
 .thumb-nail  {
