@@ -13,8 +13,8 @@ AutoSearch.prototype.search = function()  {
   var div = document.getElementById(this.id);
 
   // form encode query name and value
-  var qname = encodeURIComponent(this.qname.replace(" ", "+"));
-  var txt = encodeURIComponent(this.txt.replace(" ", "+"));
+  var qname = encodeURIComponent(this.qname);
+  var txt = encodeURIComponent(this.txt);
 
   var request = new XMLHttpRequest();
   request.open("GET", url + "?" + qname + "=" + txt);
