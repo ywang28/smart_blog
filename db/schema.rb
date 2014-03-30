@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231030057) do
+ActiveRecord::Schema.define(version: 20140327044907) do
 
   create_table "comments", force: true do |t|
     t.integer "photo_id"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20131231030057) do
     t.integer "user_id"
     t.string  "date_time"
     t.string  "file_name"
+  end
+
+  create_table "tags", force: true do |t|
+    t.integer "xloc"
+    t.integer "yloc"
+    t.integer "width"
+    t.integer "height"
+    t.integer "photo_id"
+    t.string  "user_name"
   end
 
   create_table "users", force: true do |t|

@@ -1,13 +1,36 @@
-    <%= image_tag "/images/#{photo.file_name}", alt: photo.file_name, class: "center-align" %>
-    <h2>Post time <%= photo.date_time %></h2>
-    <ul class="comment-list">
-      <% photo.comment.each do |comment| %>
-        <% if comment.user %>
-        <li><p class="comment"><%= link_to comment.user.first_name + " " + comment.user.last_name, user_photos_path(comment.user) %>: <%= comment.comment %></p> 
-        <p class="timestamp"><%= comment.date_time %></p></li>
-        <% end %>
-      <% end %>
-    </ul>
-    <% if session[:user_id] %>
-      <p><%= link_to "New comment", new_user_photo_comment_path(@user,photo) %></p>
+<div class="photo-container" id="photo-<%= photo.id %>">  
+  <%= image_tag "/images/#{photo.file_name}", alt: photo.file_name, id: photo.file_name %>
+  <div class="tag-box" id="tag-<%= photo.id %>"></div>
+  <% photo.tag.each do |tag| %>
+    <% if tag.xloc %>
+      <div class="tag-show" style="left: <%= tag.xloc.to_s + "px" %>; top: <%= tag.yloc.to_s + "px" %>; width: <%= tag.width.to_s + "px" %>; height: <%= tag.height.to_s + "px" %>" title="<%= tag.user_name %>">
+      </div> 
     <% end %>
+  <% end %>
+</div>
+<h2>Post time <%= photo.date_time %></h2>
+<% if session[:user_id] %>
+  <%= form_tag(action: "create", controller: "tags", photo_id: photo.id) do %>
+    <input type="button" value="Tag photo" onclick="new Tagger('photo-<%= photo.id %>', 'tag-<%= photo.id %>', this.form.sel, this.form.submit, this.form.xloc, this.form.yloc, this.form.width, this.form.height).drag();"/>
+    <select name="sel" class="tag-form">
+      <%= options_from_collection_for_select(User.all, :id, :first_name) %>
+    </select>
+    <input type="submit" name="submit" value="Confirm tagging" class="tag-form" />
+    <input type="hidden" name="xloc" />
+    <input type="hidden" name="yloc" />
+    <input type="hidden" name="width" />
+    <input type="hidden" name="height" />
+  <% end %>
+<% end %>
+<ul class="comment-list">
+  <% photo.comment.each do |comment| %>
+    <% if comment.user %>
+      <li><div class="comment"><%= link_to comment.user.first_name + " " + comment.user.last_name, user_photos_path(comment.user) %>: <%= comment.comment %></div> 
+        <div class="timestamp"><%= comment.date_time %></div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+<% if session[:user_id] %>
+  <p><%= link_to "New comment", new_user_photo_comment_path(@user,photo) %></p>
+<% end %>

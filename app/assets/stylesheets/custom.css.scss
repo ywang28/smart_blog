@@ -147,3 +147,42 @@ footer {
   font-size: 0.9em;
   color:  grey;
 }
+
+.photo-container  {
+  border:  solid black 2px;
+  position:  relative;
+  display:  inline-block;
+}
+
+.tag-box  {
+  border:  dashed blue 2px;
+  position:  absolute;
+  left:  0px;
+  top:  0px;
+  width:  0px;
+  height:  0px;
+  display:  none;
+}
+
+.tag-show  {
+  border:  dashed green 2px;
+  position:  absolute;
+  left:  0px;
+  top:  0px;
+  width:  0px;
+  height:  0px;
+}
+
+.tag-form  {
+  display:  none;
+  margin:  10px 20px 0px 20px;
+}
+
+.tag-box:hover  {
+  border:  dashed red 2px;
+}
+
+.thumb-nail  {
+  height:  50px;
+  width:  auto;
+}

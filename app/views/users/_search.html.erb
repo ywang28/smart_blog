@@ -1,0 +1,3 @@
+<% for photo in @match %>
+  <%= link_to image_tag("/images/#{photo.file_name}", alt: photo.file_name, class: "thumb-nail"), user_photos_path(photo.user) + "#" + photo.file_name %>
+<% end %>

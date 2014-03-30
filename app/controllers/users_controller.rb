@@ -53,6 +53,32 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def search
+    txt = params[:query]
+    photos = Photo.all
+    @match = []
+    if !txt.empty?
+      txt = txt.downcase
+      for photo in photos
+        for comment in photo.comment
+          if comment.comment.downcase.include? txt
+            @match.push(photo)
+            break
+          end
+        end
+        if not @match.include? photo
+          for tag in photo.tag
+            if tag.user_name.downcase.include? txt
+              @match.push(photo)
+              break
+            end
+          end
+        end
+      end
+    end
+    render partial: 'search'
+  end
+
   private
 
     def user_params

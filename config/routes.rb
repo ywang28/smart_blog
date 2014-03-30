@@ -65,8 +65,10 @@ Project4::Application.routes.draw do
       get 'login'
       post 'post_login'
       get 'logout'
+      get 'search'
     end
     resources :photos do 
+      resources :tags,  only:  [:new, :create]
       resources :comments
     end
   end

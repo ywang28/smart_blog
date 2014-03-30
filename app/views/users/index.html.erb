@@ -1,5 +1,10 @@
 <% provide(:title, "Users") %>
 <h1>Users</h1>
+<form>
+  <label>Enter key words to search photos (case insensitive):</label>
+  <input type="text" name="photo-search" placeholder="barack" oninput="new AutoSearch(this.value, '/users/search', 'query', 'show-photo').search();" />
+</form>
+<div id="show-photo"></div>
 <ul class="users">
 <% @users.each do |u| %>
   <li><%=link_to u.first_name+" "+u.last_name, user_photos_path(u) %></li>
